@@ -1,6 +1,7 @@
 package com.kasperxms.kasperweather;
 
 public class RegionalTemperature {
+    private String time;
     private String name;
     private int temp;
 
@@ -18,5 +19,13 @@ public class RegionalTemperature {
 
     public void setTemp(int temp) {
         this.temp = temp;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface CurrentWeatherService {
     public LatestWeather getCurrentWeather();
-    public List<RegionalTemperature> getAllRegionTemp();
+    public List<RegionalTemperature> getAllCurrentRegionTemp();
 }
