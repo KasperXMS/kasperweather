@@ -19,4 +19,10 @@ public interface LatestWeatherMapper {
 
     @Select("select * from current_weather where unix_timestamp(time) >= unix_timestamp(#{startTimeStr}) and unix_timestamp(time) <= unix_timestamp(#{endTimeStr})")
     public List<LatestWeather> getLWinTimePeriod(String startTimeStr, String endTimeStr);
+
+    @Select("select HOUR(TIME(time)) as hour, AVG(temp) as value from current_weather WHERE TIMESTAMP(time) > TIMESTAMP(#{startTimeStr}) and TIMESTAMP(time) < TIMESTAMP(#{endTimeStr}) GROUP BY HOUR(TIME(time))")
+    public List<HourValue> getAvgHourTemp(String startTimeStr, String endTimeStr);
+
+    @Select("select HOUR(TIME(time)) as hour, AVG(humid) as value from current_weather WHERE TIMESTAMP(time) > TIMESTAMP(#{startTimeStr}) and TIMESTAMP(time) < TIMESTAMP(#{endTimeStr}) GROUP BY HOUR(TIME(time))")
+    public List<HourValue> getAvgHourHumid(String startTimeStr, String endTimeStr);
 }
